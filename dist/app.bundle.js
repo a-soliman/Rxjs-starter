@@ -62,17 +62,37 @@
 	//=====================================================
 	//map
 	//------------------------
-	var source$ = _Rx2.default.Observable.interval(500).take(11).map(function (v) {
-		return v * 2;
+	var names = ['John', 'Tom', 'Shawn'];
+	var source$ = _Rx2.default.Observable.from(names).map(function (name) {
+		return name = name.toUpperCase();
+	}).map(function (name) {
+		return name = 'I\'m ' + name + ',';
 	});
 
-	source$.subscribe(function (v) {
-		console.log(v);
+	source$.subscribe(function (name) {
+		console.log(name);
 	}, function (err) {
 		console.log(err);
 	}, function (complete) {
 		console.log('Completed!');
 	});
+
+	// const source$ = Rx.Observable.interval(500)
+	// 	.take(11)
+	// 	.map(v => v * 2)
+
+	// source$.subscribe(
+	// 	v => {
+	// 		console.log(v);
+	// 	},
+	// 	err => {
+	// 		console.log(err);
+	// 	},
+	// 	complete => {
+	// 		console.log('Completed!');
+	// 	}
+	// );
+
 
 	//=====================================================
 	//Interval, timer and range.

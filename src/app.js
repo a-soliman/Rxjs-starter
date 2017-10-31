@@ -8,21 +8,39 @@ import Rx from 'rxjs/Rx';
 //=====================================================
 //map
 //------------------------
-const source$ = Rx.Observable.interval(500)
-	.take(11)
-	.map(v => v * 2)
+const names = ['John', 'Tom', 'Shawn']
+const source$ = Rx.Observable.from(names)
+	.map(name => name = name.toUpperCase())
+	.map(name => name = `I'm ${name},`)
 
 source$.subscribe(
-	v => {
-		console.log(v);
+	name => {
+		console.log(name);
 	},
 	err => {
 		console.log(err);
 	},
 	complete => {
-		console.log('Completed!');
+		console.log('Completed!')
 	}
 );
+
+
+// const source$ = Rx.Observable.interval(500)
+// 	.take(11)
+// 	.map(v => v * 2)
+
+// source$.subscribe(
+// 	v => {
+// 		console.log(v);
+// 	},
+// 	err => {
+// 		console.log(err);
+// 	},
+// 	complete => {
+// 		console.log('Completed!');
+// 	}
+// );
 
 
 
