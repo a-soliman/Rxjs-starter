@@ -6,22 +6,46 @@ import Rx from 'rxjs/Rx';
 // 46:11
 
 //=====================================================
-//Interval, timer and range.
+//map
 //------------------------
-
-const source$ = Rx.Observable.range(0, 5);
+const source$ = Rx.Observable.interval(500)
+	.take(11)
+	.map(v => v * 2)
 
 source$.subscribe(
-	x => {
-		console.log(x);
+	v => {
+		console.log(v);
 	},
 	err => {
 		console.log(err);
 	},
 	complete => {
-		console.log('Completed!')
+		console.log('Completed!');
 	}
 );
+
+
+
+
+
+
+//=====================================================
+//Interval, timer and range.
+//------------------------
+
+// const source$ = Rx.Observable.range(0, 5);
+
+// source$.subscribe(
+// 	x => {
+// 		console.log(x);
+// 	},
+// 	err => {
+// 		console.log(err);
+// 	},
+// 	complete => {
+// 		console.log('Completed!')
+// 	}
+// );
 
 // const source$ = Rx.Observable.timer(1000, 100)
 // 	.take(6)

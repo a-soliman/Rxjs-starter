@@ -60,18 +60,37 @@
 	// 46:11
 
 	//=====================================================
-	//Interval, timer and range.
+	//map
 	//------------------------
+	var source$ = _Rx2.default.Observable.interval(500).take(11).map(function (v) {
+		return v * 2;
+	});
 
-	var source$ = _Rx2.default.Observable.range(0, 5);
-
-	source$.subscribe(function (x) {
-		console.log(x);
+	source$.subscribe(function (v) {
+		console.log(v);
 	}, function (err) {
 		console.log(err);
 	}, function (complete) {
 		console.log('Completed!');
 	});
+
+	//=====================================================
+	//Interval, timer and range.
+	//------------------------
+
+	// const source$ = Rx.Observable.range(0, 5);
+
+	// source$.subscribe(
+	// 	x => {
+	// 		console.log(x);
+	// 	},
+	// 	err => {
+	// 		console.log(err);
+	// 	},
+	// 	complete => {
+	// 		console.log('Completed!')
+	// 	}
+	// );
 
 	// const source$ = Rx.Observable.timer(1000, 100)
 	// 	.take(6)
