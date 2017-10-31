@@ -9,23 +9,49 @@ import Rx from 'rxjs/Rx';
 //map
 //------------------------
 
-function getGithubUser(username) {
-	return $.ajax({
-		url: 'https://api.github.com/users/' + username,
-		dataType : 'jsonp'
-	}).promise();
-}
 
-Rx.Observable.fromPromise(getGithubUser('a-soliman'))
-	.map(user => user = user.data)
+
+const users = [
+	{ name: 'Will', age: 34 },
+	{ name: 'Mike', age: 33 },
+	{ name: 'Paul', age: 35}
+];
+
+const users$ = Rx.Observable.from(users)
+	.pluck('age')
+
+users$
+
 	.subscribe(
 		user => {
-			console.log(user)
+			console.log(user);
 		},
 		err => {
-			console.log(err)
+			console.log(err);
+		},
+		complete => {
+			console.log('Completed');
 		}
-);
+	)
+
+
+// function getGithubUser(username) {
+// 	return $.ajax({
+// 		url: 'https://api.github.com/users/' + username,
+// 		dataType : 'jsonp'
+// 	}).promise();
+// }
+
+// Rx.Observable.fromPromise(getGithubUser('a-soliman'))
+// 	.map(user => user = user.data)
+// 	.subscribe(
+// 		user => {
+// 			console.log(user)
+// 		},
+// 		err => {
+// 			console.log(err)
+// 		}
+// );
 
 
 
