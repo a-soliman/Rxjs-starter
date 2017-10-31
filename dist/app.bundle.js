@@ -56,6 +56,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//STOP POINT: https://www.youtube.com/watch?v=ei7FsoXKPl0
+	// 46:11
 	//=====================================================
 	//Observables from A Promise
 	//------------------------

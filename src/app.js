@@ -1,6 +1,9 @@
 import $ from 'jquery';
 import Rx from 'rxjs/Rx';
 
+
+//STOP POINT: https://www.youtube.com/watch?v=ei7FsoXKPl0
+// 46:11
 //=====================================================
 //Observables from A Promise
 //------------------------
