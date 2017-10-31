@@ -4,18 +4,42 @@ import Rx from 'rxjs/Rx';
 
 //STOP POINT: https://www.youtube.com/watch?v=ei7FsoXKPl0
 // 46:11
+
+//=====================================================
+//Interval, timer and range.
+//------------------------
+const source$ = Rx.Observable.interval(1000)
+	.take(5)
+
+source$.subscribe(
+	x => {
+		console.log(x)
+	},
+	err => {
+		console.log(err);
+	},
+	complete => {
+		console.log('Completed!')
+	}
+);
+
+
+
+
+
+
 //=====================================================
 //Observables from A Promise
 //------------------------
 
 
-const myPromise  = new Promise((resolve, reject) => {
-	console.log('Creating Promise');
+// const myPromise  = new Promise((resolve, reject) => {
+// 	console.log('Creating Promise');
 
-	setTimeout(() => {
-		resolve('Hellow from Promise');
-	}, 2000);
-})
+// 	setTimeout(() => {
+// 		resolve('Hellow from Promise');
+// 	}, 2000);
+// })
 
 
 // myPromise.then(x => {
@@ -36,19 +60,19 @@ const myPromise  = new Promise((resolve, reject) => {
 // 	}
 // )
 
-function getUser(username) {
-	return $.ajax({
-		url: 'https://api.github.com/users/' + username,
-		dataType: 'jsonp' 
-	}).promise();
-}
+// function getUser(username) {
+// 	return $.ajax({
+// 		url: 'https://api.github.com/users/' + username,
+// 		dataType: 'jsonp' 
+// 	}).promise();
+// }
 
-Rx.Observable.fromPromise(getUser('a-soliman'))
-	.subscribe( x => {
-		console.log(x.data)
-		$('#name').text(x.data.name);
-		$('#img').attr("src", x.data.avatar_url)
-	})
+// Rx.Observable.fromPromise(getUser('a-soliman'))
+// 	.subscribe( x => {
+// 		console.log(x.data)
+// 		$('#name').text(x.data.name);
+// 		$('#img').attr("src", x.data.avatar_url)
+// 	})
 
 //=====================================================
 // // //Observables from SKRATCH

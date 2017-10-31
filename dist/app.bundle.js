@@ -58,18 +58,33 @@
 
 	//STOP POINT: https://www.youtube.com/watch?v=ei7FsoXKPl0
 	// 46:11
+
+	//=====================================================
+	//Interval, timer and range.
+	//------------------------
+	var source$ = _Rx2.default.Observable.interval(1000).take(5);
+
+	source$.subscribe(function (x) {
+		console.log(x);
+	}, function (err) {
+		console.log(err);
+	}, function (complete) {
+		console.log('Completed!');
+	});
+
 	//=====================================================
 	//Observables from A Promise
 	//------------------------
 
 
-	var myPromise = new Promise(function (resolve, reject) {
-		console.log('Creating Promise');
+	// const myPromise  = new Promise((resolve, reject) => {
+	// 	console.log('Creating Promise');
 
-		setTimeout(function () {
-			resolve('Hellow from Promise');
-		}, 2000);
-	});
+	// 	setTimeout(() => {
+	// 		resolve('Hellow from Promise');
+	// 	}, 2000);
+	// })
+
 
 	// myPromise.then(x => {
 	// 	console.log(x)
@@ -89,18 +104,19 @@
 	// 	}
 	// )
 
-	function getUser(username) {
-		return _jquery2.default.ajax({
-			url: 'https://api.github.com/users/' + username,
-			dataType: 'jsonp'
-		}).promise();
-	}
+	// function getUser(username) {
+	// 	return $.ajax({
+	// 		url: 'https://api.github.com/users/' + username,
+	// 		dataType: 'jsonp' 
+	// 	}).promise();
+	// }
 
-	_Rx2.default.Observable.fromPromise(getUser('a-soliman')).subscribe(function (x) {
-		console.log(x.data);
-		(0, _jquery2.default)('#name').text(x.data.name);
-		(0, _jquery2.default)('#img').attr("src", x.data.avatar_url);
-	});
+	// Rx.Observable.fromPromise(getUser('a-soliman'))
+	// 	.subscribe( x => {
+	// 		console.log(x.data)
+	// 		$('#name').text(x.data.name);
+	// 		$('#img').attr("src", x.data.avatar_url)
+	// 	})
 
 	//=====================================================
 	// // //Observables from SKRATCH
