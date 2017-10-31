@@ -8,22 +8,43 @@ import Rx from 'rxjs/Rx';
 //=====================================================
 //map
 //------------------------
-const names = ['John', 'Tom', 'Shawn']
-const source$ = Rx.Observable.from(names)
-	.map(name => name = name.toUpperCase())
-	.map(name => name = `I'm ${name},`)
 
-source$.subscribe(
-	name => {
-		console.log(name);
-	},
-	err => {
-		console.log(err);
-	},
-	complete => {
-		console.log('Completed!')
-	}
+function getGithubUser(username) {
+	return $.ajax({
+		url: 'https://api.github.com/users/' + username,
+		dataType : 'jsonp'
+	}).promise();
+}
+
+Rx.Observable.fromPromise(getGithubUser('a-soliman'))
+	.map(user => user = user.data)
+	.subscribe(
+		user => {
+			console.log(user)
+		},
+		err => {
+			console.log(err)
+		}
 );
+
+
+
+// const names = ['John', 'Tom', 'Shawn']
+// const source$ = Rx.Observable.from(names)
+// 	.map(name => name = name.toUpperCase())
+// 	.map(name => name = `I'm ${name},`)
+
+// source$.subscribe(
+// 	name => {
+// 		console.log(name);
+// 	},
+// 	err => {
+// 		console.log(err);
+// 	},
+// 	complete => {
+// 		console.log('Completed!')
+// 	}
+// );
 
 
 // const source$ = Rx.Observable.interval(500)

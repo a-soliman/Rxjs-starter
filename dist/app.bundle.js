@@ -62,20 +62,39 @@
 	//=====================================================
 	//map
 	//------------------------
-	var names = ['John', 'Tom', 'Shawn'];
-	var source$ = _Rx2.default.Observable.from(names).map(function (name) {
-		return name = name.toUpperCase();
-	}).map(function (name) {
-		return name = 'I\'m ' + name + ',';
-	});
 
-	source$.subscribe(function (name) {
-		console.log(name);
+	function getGithubUser(username) {
+		return _jquery2.default.ajax({
+			url: 'https://api.github.com/users/' + username,
+			dataType: 'jsonp'
+		}).promise();
+	}
+
+	_Rx2.default.Observable.fromPromise(getGithubUser('a-soliman')).map(function (user) {
+		return user = user.data;
+	}).subscribe(function (user) {
+		console.log(user);
 	}, function (err) {
 		console.log(err);
-	}, function (complete) {
-		console.log('Completed!');
 	});
+
+	// const names = ['John', 'Tom', 'Shawn']
+	// const source$ = Rx.Observable.from(names)
+	// 	.map(name => name = name.toUpperCase())
+	// 	.map(name => name = `I'm ${name},`)
+
+	// source$.subscribe(
+	// 	name => {
+	// 		console.log(name);
+	// 	},
+	// 	err => {
+	// 		console.log(err);
+	// 	},
+	// 	complete => {
+	// 		console.log('Completed!')
+	// 	}
+	// );
+
 
 	// const source$ = Rx.Observable.interval(500)
 	// 	.take(11)
