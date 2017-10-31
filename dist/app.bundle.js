@@ -63,7 +63,7 @@
 	//Interval, timer and range.
 	//------------------------
 
-	var source$ = _Rx2.default.Observable.timer(1000, 100).take(6);
+	var source$ = _Rx2.default.Observable.range(0, 5);
 
 	source$.subscribe(function (x) {
 		console.log(x);
@@ -72,6 +72,22 @@
 	}, function (complete) {
 		console.log('Completed!');
 	});
+
+	// const source$ = Rx.Observable.timer(1000, 100)
+	// 	.take(6)
+
+	// source$.subscribe(
+	// 	x => {
+	// 		console.log(x);
+	// 	},
+	// 	err => {
+	// 		console.log(err);
+	// 	},
+	// 	complete => {
+	// 		console.log('Completed!')
+	// 	}
+	// );
+
 
 	// const source$ = Rx.Observable.interval(1000)
 	// 	.take(5)

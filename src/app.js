@@ -9,8 +9,7 @@ import Rx from 'rxjs/Rx';
 //Interval, timer and range.
 //------------------------
 
-const source$ = Rx.Observable.timer(1000, 100)
-	.take(6)
+const source$ = Rx.Observable.range(0, 5);
 
 source$.subscribe(
 	x => {
@@ -23,6 +22,21 @@ source$.subscribe(
 		console.log('Completed!')
 	}
 );
+
+// const source$ = Rx.Observable.timer(1000, 100)
+// 	.take(6)
+
+// source$.subscribe(
+// 	x => {
+// 		console.log(x);
+// 	},
+// 	err => {
+// 		console.log(err);
+// 	},
+// 	complete => {
+// 		console.log('Completed!')
+// 	}
+// );
 
 
 // const source$ = Rx.Observable.interval(1000)
