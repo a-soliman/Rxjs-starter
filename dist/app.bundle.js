@@ -60,21 +60,69 @@
 	// 46:11
 
 	//=====================================================
-	//map
+	//Merge and concate
+	//------------------------
+
+	var source1$ = _Rx2.default.Observable.range(0, 5).map(function (v) {
+		return 'Source1 : ' + v;
+	});
+
+	var source2$ = _Rx2.default.Observable.range(6, 5).map(function (v) {
+		return 'Source2 : ' + v;
+	});
+
+	_Rx2.default.Observable.concat(source1$, source2$).subscribe(function (x) {
+		return console.log(x);
+	});
+
+	// Rx.Observable.of('Hello')
+	// 	.merge(Rx.Observable.of('Everyone'))
+	// 	.subscribe(x => console.log(x));
+
+	// Rx.Observable.interval(2000)
+	// 	.merge(Rx.Observable.interval(500))
+	// 	.take(25)
+	// 	.subscribe(x => console.log(x))
+
+	// const source1$ = Rx.Observable.interval(2000)
+	// 	.map(v => 'Merge1: ' + v);
+
+	// const source2$ = Rx.Observable.interval(500)
+	// 	.map(v => 'Merge2: ' + v);
+
+
+	// Rx.Observable.merge(source1$, source2$)
+	// 	.take(10)
+	// 	.subscribe(x => console.log(x))
+
+	//=====================================================
+	//map & pluck
 	//------------------------
 
 
-	var users = [{ name: 'Will', age: 34 }, { name: 'Mike', age: 33 }, { name: 'Paul', age: 35 }];
+	// const users = [
+	// 	{ name: 'Will', age: 34 },
+	// 	{ name: 'Mike', age: 33 },
+	// 	{ name: 'Paul', age: 35}
+	// ];
 
-	var users$ = _Rx2.default.Observable.from(users).pluck('age');
+	// const users$ = Rx.Observable.from(users)
+	// 	.pluck('age')
 
-	users$.subscribe(function (user) {
-		console.log(user);
-	}, function (err) {
-		console.log(err);
-	}, function (complete) {
-		console.log('Completed');
-	});
+	// users$
+
+	// 	.subscribe(
+	// 		user => {
+	// 			console.log(user);
+	// 		},
+	// 		err => {
+	// 			console.log(err);
+	// 		},
+	// 		complete => {
+	// 			console.log('Completed');
+	// 		}
+	// 	)
+
 
 	// function getGithubUser(username) {
 	// 	return $.ajax({

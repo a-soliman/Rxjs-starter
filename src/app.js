@@ -6,33 +6,66 @@ import Rx from 'rxjs/Rx';
 // 46:11
 
 //=====================================================
-//map
+//Merge and concate
+//------------------------
+
+const source1$ = Rx.Observable.range(0, 5)
+	.map(v => 'Source1 : ' + v );
+
+const source2$ = Rx.Observable.range(6, 5)
+	.map(v => 'Source2 : ' + v );
+
+Rx.Observable.concat(source1$, source2$)
+	.subscribe(x => console.log(x))
+
+// Rx.Observable.of('Hello')
+// 	.merge(Rx.Observable.of('Everyone'))
+// 	.subscribe(x => console.log(x));
+
+// Rx.Observable.interval(2000)
+// 	.merge(Rx.Observable.interval(500))
+// 	.take(25)
+// 	.subscribe(x => console.log(x))
+
+// const source1$ = Rx.Observable.interval(2000)
+// 	.map(v => 'Merge1: ' + v);
+
+// const source2$ = Rx.Observable.interval(500)
+// 	.map(v => 'Merge2: ' + v);
+
+
+// Rx.Observable.merge(source1$, source2$)
+// 	.take(10)
+// 	.subscribe(x => console.log(x))
+
+//=====================================================
+//map & pluck
 //------------------------
 
 
 
-const users = [
-	{ name: 'Will', age: 34 },
-	{ name: 'Mike', age: 33 },
-	{ name: 'Paul', age: 35}
-];
+// const users = [
+// 	{ name: 'Will', age: 34 },
+// 	{ name: 'Mike', age: 33 },
+// 	{ name: 'Paul', age: 35}
+// ];
 
-const users$ = Rx.Observable.from(users)
-	.pluck('age')
+// const users$ = Rx.Observable.from(users)
+// 	.pluck('age')
 
-users$
+// users$
 
-	.subscribe(
-		user => {
-			console.log(user);
-		},
-		err => {
-			console.log(err);
-		},
-		complete => {
-			console.log('Completed');
-		}
-	)
+// 	.subscribe(
+// 		user => {
+// 			console.log(user);
+// 		},
+// 		err => {
+// 			console.log(err);
+// 		},
+// 		complete => {
+// 			console.log('Completed');
+// 		}
+// 	)
 
 
 // function getGithubUser(username) {
